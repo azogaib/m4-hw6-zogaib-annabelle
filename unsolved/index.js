@@ -10,7 +10,7 @@ function getPizzaOrder() {
   alert("Hi, Thanks for ordering with Web to Pizza!")
   var pizza = {
     // set the 'cost' property to the basePrice
-    // YOUR CODE HERE
+    cost: basePrice  
   }
 
   var crust = prompt(
@@ -21,7 +21,13 @@ function getPizzaOrder() {
   // HINT: You may wish to use .toLowerCase() and .trim()
   // if the user specified 'thick' crust, add thickCrustUpcharge
   // to pizza.cost
-  // YOUR CODE HERE
+  if (typeof crust === 'string' && crust) {
+    pizza.crust = crust.trim().toLowerCase()
+    console.log(pizza.crust)
+    if (pizza.crust === 'thick') {
+      pizza.cost = pizza.cost + thickCrustUpcharge
+    }
+  }
 
   var toppings = prompt("Please enter additional toppings (comma separated)")
   // HINT: prompt() will return an empty string "" if the user presses 'OK' without entering a value
@@ -35,7 +41,13 @@ function getPizzaOrder() {
   // HINT: confirm() returns a boolean
   // if the user specifies extra cheese, set pizza.extraCheese to true or false
   // if the user specifies extra cheese, add extraCheeseUpcharge to pizza.cost
-  // YOUR CODE HERE
+  if (extraCheese === true) {
+    pizza.cost = pizza.cost + extraCheeseUpcharge
+  }
+  else {
+    0
+  }
+
 
   var isDelivery = confirm("Is your order for Delivery?")
   // HINT: confirm() returns a boolean
